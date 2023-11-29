@@ -1,6 +1,7 @@
 import http from "http";
 import file from "fs";
 import path from "path";
+import { StringUtil } from "./util/StringUtil";
 
 const hostName: string = "127.0.0.1";
 const port: number = 5000;
@@ -29,7 +30,9 @@ const server: http.Server = http.createServer(
               console.log(`Erroror reading notes: ${err.message}`);
               return;
             }
-            response.end(`<pre>${data}</pre>`);
+            const myName: string = "Kamal Busari";
+            let result: string = StringUtil.stringTriangle(myName);
+            response.end(`<pre>${result}</pre>`);
           }
         );
       }
