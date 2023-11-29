@@ -15,7 +15,7 @@ const server: http.Server = http.createServer(
       homeDirectory: os.homedir(),
       temporyDirectory: os.tmpdir(),
     };
-    response.end(`<pre>${osData}<pre>`);
+    response.end(`<pre>${JSON.stringify(osData)}<pre>`);
   }
 );
 server.listen(port, hostName, () => {
