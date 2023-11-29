@@ -13,7 +13,7 @@ const server: http.Server = http.createServer(
     // Path: This helps you dynamically access files across different platforms.
 
     file.readFile(
-      path.join(__dirname, "data", "note.txt"),
+      path.join(__dirname, "data", "data.json"),
       "utf-8",
       (error, data) => {
         if (error != null) {
@@ -21,7 +21,7 @@ const server: http.Server = http.createServer(
           return;
         }
         file.writeFile(
-          path.join(__dirname, "data", "note.txt"),
+          path.join(__dirname, "data", "data-copy.json"),
           data,
           "utf-8",
           (err) => {
@@ -29,7 +29,7 @@ const server: http.Server = http.createServer(
               console.log(`Erroror reading notes: ${err.message}`);
               return;
             }
-            response.end(`<pre>${data.split("\n")[0]}</pre>`);
+            response.end(`<pre>${data}</pre>`);
           }
         );
       }
