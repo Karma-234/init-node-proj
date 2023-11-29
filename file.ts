@@ -29,9 +29,7 @@ const server: http.Server = http.createServer(
               console.log(`Erroror reading notes: ${err.message}`);
               return;
             }
-            response.end(
-              `<pre>${data.split("\n")[data.split("\n").length - 1]}</pre>`
-            );
+            response.end(`<pre>${data.split("\n")[0]}</pre>`);
           }
         );
       }
