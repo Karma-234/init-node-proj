@@ -15,12 +15,24 @@ const server: http.Server = http.createServer(
     file.readFile(
       path.join(__dirname, "data", "note.txt"),
       "utf-8",
-      (err, data) => {
-        if (err != null) {
-          console.log(`Error reading notes: ${err.message}`);
+      (error, data) => {
+        if (error != null) {
+          console.log(`Erroror reading notes: ${error.message}`);
+          return;
         }
-        response.end(
-          `<pre>${data.split("\n")[data.split("\n").length - 1]}</pre>`
+        file.writeFile(
+          path.join(__dirname, "data", "note.txt"),
+          data,
+          "utf-8",
+          (err) => {
+            if (err != null) {
+              console.log(`Erroror reading notes: ${err.message}`);
+              return;
+            }
+            response.end(
+              `<pre>${data.split("\n")[data.split("\n").length - 1]}</pre>`
+            );
+          }
         );
       }
     );
